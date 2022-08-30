@@ -1,0 +1,60 @@
+openssl md5 -binary  /Users/z.nasir/Downloads/installer-3.22.3-Private.tar.gz  | openssl enc -base64
+openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365 -nodes >> create self sign cert
+
+Bind to non local address
+nano /etc/sysctl.conf
+# allow processes to bind to the non-local address
+net.ipv4.ip_nonlocal_bind = 1
+sysctl -p /etc/sysctl.conf
+
+Find listening port
+from root
+# fuser -v -n tcp 80
+                     USER        PID ACCESS COMMAND
+80/tcp:              root       1122 F.... apache2
+                     www-data   1143 F.... apache2
+                     www-data   1144 F.... apache2
+                     www-data   1145 F.... apache2
+                     www-data   1146 F.... apache2
+                     www-data   1148 F.... apache2
+
+# systemctl stop apache2
+# systemctl disable apache2
+
+
+########################
+yum clean all
+yum repolist all | grep nginx
+sudo yum list available | grep nginx-plus
+cat /etc/yum.repos.d/nginx-plus-7.4.repo
+yum-config-manager --enable nginx-plus
+Can ask for /etc/yum.conf
+# check the available versions:
+yum --showduplicates list nginx-plus | expand
+
+# install one specific:
+yum install nginx-plus-18-1.el7.ngx
+
+yum updateinfo list security all (list required security updates that need applying)
+yum info-sec (provide more information of security updates)
+yum update --security (this will update security for all packages on your system so only run if this is what you want to do)
+
+########################
+
+
+DATABASE
+\l - show database
+\c common - connect to DB common
+\dt+ - show tables
+\d components - get info,column from table components
+
+common=# select name,desired_state::json->'security'->'identityProviderRefs' from components WHERE name LIKE '%api.cgi-bin.url.nph-aws2_min_agr%';
+               name               |                      ?column?
+----------------------------------+----------------------------------------------------
+ api.cgi-bin.url.nph-aws2_min_agr | [{"ref": "/security/identity-providers/test-idp"}]
+ api.cgi-bin.url.nph-aws2_min_agr | [{"ref": "/security/identity-providers/url-api"}]
+
+
+
+
+########################
