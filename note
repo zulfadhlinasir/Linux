@@ -39,6 +39,8 @@ yum updateinfo list security all (list required security updates that need apply
 yum info-sec (provide more information of security updates)
 yum update --security (this will update security for all packages on your system so only run if this is what you want to do)
 
+You can download required rpm packages from https://my.f5.com portal and use 'rpm -Uvh <package-file>' command to upgrade or 'rpm -Uvh --oldpackage <package-file>' to downgrade installed package.
+
 ########################
 
 
