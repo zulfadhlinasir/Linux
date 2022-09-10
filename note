@@ -53,8 +53,8 @@ DATABASE
 common=# select name,desired_state::json->'security'->'identityProviderRefs' from components WHERE name LIKE '%api.cgi-bin.url.nph-aws2_min_agr%';
                name               |                      ?column?
 ----------------------------------+----------------------------------------------------
- api.cgi-bin.url.nph-aws2_min_agr | [{"ref": "/security/identity-providers/test-idp"}]
- api.cgi-bin.url.nph-aws2_min_agr | [{"ref": "/security/identity-providers/url-api"}]
+ api.cgi-bin.url.meme-aws2_min_agr | [{"ref": "/security/identity-providers/test-idp"}]
+ api.cgi-bin.url.nph-mdmmddmaws2_min_krkkfkfllagr | [{"ref": "/security/identity-providers/url-api"}]
 
 
 
